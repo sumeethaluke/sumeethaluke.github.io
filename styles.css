@@ -76,7 +76,7 @@ header nav ul li a:hover {
 /* Section */
 section {
     padding: 50px 20px;
-    text-align: center;
+    text-align: left;
 }
 
 h2, h3 {

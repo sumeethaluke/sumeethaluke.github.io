@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f9f9f9;
@@ -7,7 +9,7 @@ body {
 
 header {
     position: relative;
-    background-image: url("C:/Users/Administrator/Desktop/WhatsApp Image 2024-08-01 at 14.52.42_3463beb1.jpg");
+    background-image: url("header-background.jpg");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -17,19 +19,14 @@ header {
     padding-top: 100px;
 }
 
-header .logo h1 {
-    margin: 0;
-    font-size: 2.5em;
-    position: relative;
-    z-index: 2;
+header .logo h1, header .tagline {
+    opacity: 0;
+    animation: fadeIn 2s ease-out forwards;
 }
 
-header .tagline {
-    font-size: 1.2em;
-    opacity: 1;
-    position: relative;
-    z-index: 2;
-    transition: transform 0.5s ease, opacity 0.5s ease;
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
 }
 
 header nav ul {
@@ -51,14 +48,28 @@ header nav ul li a {
 section {
     padding: 40px;
     margin: 20px 0;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
-h2 {
-    color: #333;
+section.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
-h3 {
-    color: #444;
+.service {
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #fff;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.service:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.15);
 }
 
 form {
@@ -67,6 +78,42 @@ form {
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
+}
+
+form input, form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+form input:focus, form textarea:focus {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-color: #ff6700;
+}
+
+#backToTop {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    padding: 10px;
+    font-size: 1.5em;
+    display: none;
+    background-color: #ff6700;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: opacity 0.4s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#backToTop.show {
+    display: block;
+    opacity: 1;
 }
 
 footer {
